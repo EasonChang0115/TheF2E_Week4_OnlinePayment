@@ -3,14 +3,16 @@
 @import './layout/layout.scss';
 @import './util/animation.scss';
 
+// font
+@import './font/font.scss';
 // UI
-
-@import url('https://fonts.googleapis.com/css?family=Roboto+Slab:300,400,700&display=swap');
+@import './component/form.scss';
+@import './component/buttons.scss';
 
 * {
   box-sizing: border-box;
   position: relative;
-  font-family: 'Roboto Slab', 'Microsoft JhengHei', sans-serif;
+  font-family: 'Noto Sans CJK TC', 'Microsoft JhengHei', sans-serif;
   user-select: none;
 }
 

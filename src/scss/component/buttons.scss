@@ -1,0 +1,33 @@
+.button-group {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  button {
+    border: none;
+    outline: none;
+    width: 257px;
+    height: 45px;
+    transition: .3s;
+    font-size: 18px;
+    font-weight: normal;
+    cursor: pointer;
+    &.primary {
+      background-color: $primary-color;
+      color: white;
+      text-align: center;
+      padding: 10px 90px;
+    }
+    &.second {
+      background-color: $second-color;
+      color: $primary-color;
+      text-align: center;
+      padding: 10px 90px;
+      border: 1px $second-color solid;
+      &:hover {
+        background-color: $primary-color;
+        color: $second-color;
+      }
+    }
+  }
+}

@@ -1,7 +1,6 @@
+const baseUrl = process.env.NODE_ENV === 'production' ? '/TheF2E_Week4_OnlinePayment/dist/' : '/';
 module.exports = {
-  publicPath: process.env.NODE_ENV === 'production'
-    ? '/TheF2E_Week2_FreeCell/dist/'
-    : '/',
+  publicPath: baseUrl
   css: {
     loaderOptions: {
       sass: {

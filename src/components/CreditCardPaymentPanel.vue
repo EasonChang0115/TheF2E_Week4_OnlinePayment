@@ -122,7 +122,7 @@ export default {
           this.$refs.creditCardDate.validation() ||
           this.$refs.creditCardValidNumber.validation() ||
           this.$refs.phoneNumber.validation()) return;
-      console.log('submit');
+      this.$router.push({ path: 'end' });
     },
     invalidCardName() {
       if (this.formData.cardName.length === 0) return true;

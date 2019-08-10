@@ -1,29 +1,4 @@
-# thef2eweek4
+# week4 onlinePayment 線上支付
 
-## Project setup
-```
-npm install
-```
+[範例頁面](https://easonchang0115.github.io/TheF2E_Week4_OnlinePayment/dist/)
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Run your tests
-```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).

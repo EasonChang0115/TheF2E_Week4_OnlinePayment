@@ -65,6 +65,7 @@ export default {
   width: 100%;
   max-width: 553px;
   background-color: $second-color;
+  z-index: 9;
   @include pad-width {
     max-width: initial;
   }

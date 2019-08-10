@@ -7,6 +7,9 @@
 .zoom-enter-active {
   animation: zoomIn .5s ease-in-out;
 }
+.slideIn-enter-active {
+  animation: slideInLeft .5s ease-in-out;
+}
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -90,5 +93,17 @@
 
   50% {
     opacity: 1;
+  }
+}
+@keyframes slideInLeft {
+  from {
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+    visibility: visible;
+  }
+
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
   }
 }

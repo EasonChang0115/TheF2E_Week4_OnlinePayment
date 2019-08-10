@@ -2,9 +2,11 @@
   <div class="home-page">
     <OrderInforPanel :paymentType="paymentType" @onChangePaymentType="changePaymentType"/>
     <div class="payment_panel">
-      <keep-alive>
-        <component :is="paymentTypeName[paymentType]"></component>
-      </keep-alive>
+      <transition name="slideIn">
+        <keep-alive>
+          <component :is="paymentTypeName[paymentType]"></component>
+        </keep-alive>
+      </transition>
     </div>
   </div>
 </template>

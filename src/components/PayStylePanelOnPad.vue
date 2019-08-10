@@ -11,7 +11,7 @@
     <li class="pay-style"
       :class="payType === 'online_atm' ? 'active' : ''"
     >
-      <div class="title" @click="payType = 'online_atm'">網路ATM<span>(晶片讀卡機轉帳)</span><span class="close" @click.stop="payType = ''"></span></div>
+      <div class="title" @click="payType = 'online_atm'">網路ATM<span class="note">(晶片讀卡機轉帳)</span><span class="close" @click.stop="payType = ''"></span></div>
       <div class="clild-block">
         <OnlineAtmPaymentPanel />
       </div>
@@ -19,7 +19,7 @@
     <li class="pay-style"
       :class="payType === 'local_atm' ? 'active' : ''"
     >
-      <div class="title" @click="payType = 'local_atm'">ATM櫃員機<span>(實體ATM及網銀)</span><span class="close" @click.stop="payType = ''"></span></div>
+      <div class="title" @click="payType = 'local_atm'">ATM櫃員機<span class="note">(實體ATM及網銀)</span><span class="close" @click.stop="payType = ''"></span></div>
       <div class="clild-block">
         <LocalAtmPaymentPanel />
       </div>
@@ -130,6 +130,9 @@ ul.payment-style-list-pad {
         margin-top: 15px;
         margin-bottom: 25px;
         padding: 0 15px;
+        .note {
+          display: none;
+        }
         .close {
           display: inline-block;
         }

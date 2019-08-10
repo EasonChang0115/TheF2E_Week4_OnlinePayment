@@ -1,5 +1,5 @@
 <template>
-  <div class="credit_card_payment_panel">
+  <div class="paypage_panel">
     <h1>信用卡付款</h1>
     <ul class="card-image-list">
       <li class="card-image visa"
@@ -52,7 +52,7 @@
         v-model="formData.phoneNumber"
         :focus="cardPhoneNumberFocus"
       />
-      <div class="phone-alert">
+      <div class="alert">
         如非台灣手機號碼請加國碼，如香港為852，則輸入852123456789。<br>若刷卡驗證採簡訊驗證，簡訊將發送至您於發卡銀行留存的手機號碼。
       </div>
       <div class="button-group">
@@ -179,52 +179,3 @@ export default {
   }
 };
 </script>
-
-<style lang="scss" scoped>
-.credit_card_payment_panel {
-  width: 100%;
-  max-width: 495px;
-  h1 {
-    font-size: 29px;
-    font-weight: lighter;
-    color: white;
-    letter-spacing: 1px;
-    margin-bottom: 55px;
-  }
-  ul.card-image-list {
-    width: 100%;
-    padding: 0;
-    margin: 0;
-    list-style: none;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    li.card-image {
-      width: 110px;
-      height: 77px;
-      background-repeat: no-repeat;
-      background-size: contain;
-      background-position: center;
-    }
-  }
-  form.form {
-    padding-top: 30px;
-    .button-group {
-      justify-content: center;
-      margin-top: 64px;
-    }
-    .phone-alert {
-      font-size: 14px;
-      font-weight: 300;
-      color: $second-color;
-      line-height: 2;
-    }
-    .date-and-number {
-      display: flex;
-      div {
-        flex: 1;
-      }
-    }
-  }
-}
-</style>

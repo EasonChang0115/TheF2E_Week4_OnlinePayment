@@ -12,17 +12,25 @@
 <script>
 import OrderInforPanel from '@/components/OrderInforPanel.vue';
 import CreditCardPaymentPanel from '@/components/CreditCardPaymentPanel.vue';
+import OnlineAtmPaymentPanel from '@/components/OnlineAtmPaymentPanel.vue';
+import LocalAtmPaymentPanel from '@/components/LocalAtmPaymentPanel.vue';
+
 export default {
   data() {
     return {
       paymentType: 'credit_card', // credit_card, online_atm, local_atm
       paymentTypeName: {
-        credit_card: CreditCardPaymentPanel
+        credit_card: CreditCardPaymentPanel,
+        online_atm: OnlineAtmPaymentPanel,
+        local_atm: LocalAtmPaymentPanel
       }
     };
   },
   components: {
-    OrderInforPanel
+    OrderInforPanel,
+    CreditCardPaymentPanel,
+    OnlineAtmPaymentPanel,
+    LocalAtmPaymentPanel
   },
   methods: {
     changePaymentType(type) {

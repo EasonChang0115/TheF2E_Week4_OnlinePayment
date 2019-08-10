@@ -1,0 +1,28 @@
+@import '../variable.scss';
+
+// 電腦
+@mixin pc-width() {
+  @media all and (max-width: $media-max-size) {
+    @content;
+  }
+}
+// 平板
+@mixin pad-width() {
+  @media all and (max-width: $media-size-ipad) {
+    @content;
+  }
+}
+
+// 手機
+@mixin phone-width() {
+  @media all and (max-width: $media-size-phone) {
+    @content;
+  }
+}
+
+// 手機
+@mixin sphone-width() {
+  @media all and (max-width: $media-size-sphone) {
+    @content;
+  }
+}

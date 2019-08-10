@@ -7,6 +7,12 @@
     color: white;
     letter-spacing: 1px;
     margin-bottom: 55px;
+    @include pc-width {
+      margin-bottom: px-to-vw(55px, $media-max-size);
+    }
+    @include pad-width {
+      display: none;
+    }
   }
   ul.card-image-list {
     width: 100%;
@@ -22,6 +28,15 @@
       background-repeat: no-repeat;
       background-size: contain;
       background-position: center;
+      @include pc-width {
+        width: px-to-vw(110px, 1280px);
+      }
+      @include pad-width {
+        width: 80px;
+      }
+      @include phone-width {
+        width: 56px;
+      }
     }
   }
   form.form {
@@ -54,6 +69,18 @@
         margin-bottom: 25px;
         cursor: pointer;
         transition: .3s;
+        @include pc-width {
+          width: px-to-vw(240px, $media-max-size);
+          font-size: px-to-vw(28px, $media-max-size);
+          white-space: nowrap;
+        }
+        @include pad-width {
+          font-size: 16px;
+          height: initial;
+          width: calc(50% - 7.5px);
+          padding: 15px 15px;
+        }
+        
         &.active, &:hover {
           border-color: $second-color;
           color: $second-color;
@@ -66,18 +93,32 @@
     .button-group {
       justify-content: center;
       margin-top: 64px;
+      button {
+        width: 100% !important;
+      }
     }
     .alert {
       font-size: 14px;
       font-weight: 300;
       color: $second-color;
       line-height: 2;
+      white-space: initial;
       &.onlinAtm {
         padding-left: 15px;
+      }
+      @include pad-width {
+        font-size: 12px;
       }
     }
     .date-and-number {
       display: flex;
+      flex-wrap: wrap;
+      > div {
+        margin-right: 50px;
+      }
+      * {
+        white-space: nowrap;
+      }
     }
     .img-box {
       width: 100%;

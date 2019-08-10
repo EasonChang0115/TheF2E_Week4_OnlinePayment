@@ -34,6 +34,12 @@ form.form {
         &::-webkit-inner-spin-button {
           display: none;
         }
+        @include pad-width {
+          padding: 8px;
+        }
+        @include phone-width {
+          padding: 8px;
+        }
       }
       .input-box input::-webkit-input-placeholder {
         text-align: center;
@@ -67,6 +73,12 @@ form.form {
           font-weight: lighter;
           letter-spacing: 1px;
         }
+        @include pad-width {
+          font-size: 18px;
+        }
+        @include phone-width {
+          font-size: 12px;
+        }
       }
     }
     .error-msg {
@@ -79,6 +91,9 @@ form.form {
       visibility: hidden;
       opacity: 0;
       transition: .3s;
+    }
+    &.width-init {
+      width: initial;
     }
   }
 }

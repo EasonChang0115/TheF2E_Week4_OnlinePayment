@@ -51,6 +51,15 @@ export default {
     padding-bottom: 160px;
     padding-left: 85px;
     padding-right: 105px;
+    @include pc-width {
+      padding-top: px-to-vw(240px, $media-max-size);
+      padding-bottom: px-to-vw(160px, $media-max-size);
+      padding-left: px-to-vw(85px, $media-max-size);
+      padding-right: px-to-vw(105px, $media-max-size);
+    }
+    @include pad-width {
+      display: none;
+    }
   }
 }
 </style>

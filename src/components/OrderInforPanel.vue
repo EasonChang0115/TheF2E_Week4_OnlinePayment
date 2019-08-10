@@ -33,6 +33,7 @@
         </li>
       </ul>
     </div>
+    <PayStylePanelOnPad />
     <div class="store-logo">
       <img :src='`${publicPath}images/store.png`' alt="">
     </div>
@@ -40,19 +41,23 @@
 </template>
 
 <script>
-  export default {
-    props: {
-      paymentType: {
-        type: String,
-        default: 'credit_card'
-      }
-    },
-    data() {
-      return {
-        publicPath: process.env.BASE_URL
-      };
+import PayStylePanelOnPad from './PayStylePanelOnPad.vue';
+export default {
+  props: {
+    paymentType: {
+      type: String,
+      default: 'credit_card'
     }
-  };
+  },
+  components: {
+    PayStylePanelOnPad
+  },
+  data() {
+    return {
+      publicPath: process.env.BASE_URL
+    };
+  }
+};
 </script>
 
 <style lang="scss" scoped>
@@ -60,6 +65,9 @@
   width: 100%;
   max-width: 553px;
   background-color: $second-color;
+  @include pad-width {
+    max-width: initial;
+  }
   .banner {
     width: 100%;
     img {
@@ -71,11 +79,23 @@
     padding-left: 130px;
     padding-top: 55px;
     padding-bottom: 30px;
+    @include pc-width {
+      padding-left: px-to-vw(130px, $media-max-size);
+    }
+    @include pad-width {
+      padding: 28px 36px 0px;
+    }
     h1 {
       font-size: 2.5rem;
       font-weight: lighter;
       color: black;
       margin-bottom: 25px;
+      @include pad-width {
+        font-size: 36px;
+      }
+      @include sphone-width {
+        font-size: 28px
+      }
     }
     h3 {
       font-size: 18px;
@@ -84,20 +104,35 @@
       &.price-title {
         margin-top: 52px;
       }
+      @include sphone-width {
+        font-size: 14px;
+      }
     }
     .store-name, .order-number {
       font-size: 24px;
       font-weight: lighter;
       letter-spacing: 2.5px;
+      @include sphone-width {
+        font-size: 19px;
+      }
     }
     .price {
       font-size: 36px;
       text-align: right;
       padding-right: 90px;
+      @include pad-width {
+        padding-right: 0px;
+      }
+      @include sphone-width {
+        font-size: 29px;
+      }
       span {
         font-size: 24px;
         font-weight: lighter;
         margin-left: 24px;
+        @include sphone-width {
+          font-size: 19px;
+        }
       }
     }
     ul.payment-style-list {
@@ -107,6 +142,9 @@
       width: 100%;
       display: flex;
       flex-direction: column;
+      @include pad-width {
+        display: none;
+      }
       li.pay-style {
         width: 360px;
         height: 90px;
@@ -122,6 +160,14 @@
         cursor: pointer;
         transition: .3s;
         border-radius: 2px;
+        @include pc-width {
+          width: initial;
+          font-size: px-to-vw(32px, $media-max-size);
+          white-space: nowrap;
+        }
+        @media screen and (max-width: 800px) {
+          font-size: 20px;
+        }
         &.active {
           width: 100%;
         }

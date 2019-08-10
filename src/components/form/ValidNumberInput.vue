@@ -1,5 +1,5 @@
 <template>
-  <div class="form-input" :class="className">
+  <div class="form-input width-init" :class="className">
     <label><span v-if="required">*</span>{{ label }}</label>
     <div class="input-box number" :style="{ borderBottomColor: invalid ? '#FF521A' : '' }">
       <input class="number" type="text" :value="value" @change="changeNumber" @focus="onfocus">

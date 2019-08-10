@@ -1,5 +1,5 @@
 <template>
-  <div class="form-input" :class="className">
+  <div class="form-input width-init" :class="className">
     <label><span v-if="required">*</span>{{ label }}</label>
     <div class="input-boxes">
       <div class="input-box date" :style="{ borderBottomColor: invalid ? '#FF521A' : '' }">

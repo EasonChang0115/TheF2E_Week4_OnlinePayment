@@ -2,7 +2,7 @@
   <div class="form-input" :class="className">
     <label><span v-if="required">*</span>{{ label }}</label>
     <div class="input-box" :style="{ borderBottomColor: invalid ? '#FF521A' : '' }">
-      <input :type="type" :placeholder="placeholder" @change="inputChange" :value="value" @focus="myfocus">
+      <input :ref="refName" :type="type" :placeholder="placeholder" @change="inputChange" :value="value" @focus="myfocus">
     </div>
     <div class="error-msg"
       :style="{
@@ -18,6 +18,10 @@
 <script>
 export default {
   props: {
+    refName: {
+      type: String,
+      default: ''
+    },
     className: {
       type: String,
       default: ''
@@ -69,13 +73,13 @@ export default {
       return false;
     },
     inputChange(e) {
+      if (this.invalid === true) {
+        this.invalid = false;
+      }
       this.$emit('input', e.target.value);
     },
     myfocus() {
-      if (this.invalid === true) {
-        this.focus();
-        this.invalid = false;
-      }
+      this.focus();
     }
   }
 };

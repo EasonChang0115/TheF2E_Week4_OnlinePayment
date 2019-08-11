@@ -14,6 +14,7 @@
     <form action="" class="form" @submit.prevent="submit">
       <Input label="持卡人"
         ref="cardName"
+        refName="cardNameInput"
         :required="true"
         placeholder="請輸入持卡人姓名"
         errorMsg="持卡人姓名需與信用卡面姓名一致"
@@ -23,6 +24,7 @@
       />
       <CreditCardInput label="信用卡號"
         ref="creditCardNumber"
+        refName="creditCardNumberInput"
         :required="true"
         className="mt-30"
         :onValidation="invalidCreditCardNumber"
@@ -31,6 +33,7 @@
       />
       <div class="date-and-number mt-30">
         <ValidDataInput label="有效月年" :required="true"
+          refName="creditCardDateInput"
           ref="creditCardDate"
           errorMsg="請輸入正確的有效月年"
           :onValidation="invalidDate"
@@ -38,6 +41,7 @@
         />
         <ValidNumberInput label="信用卡背面末三碼" :required="true"
           ref="creditCardValidNumber"
+          refName="creditCardValidNumberInput"
           errorMsg="請輸入正確的末三碼"
           :onValidation="invalidNumber"
           v-model="formData.validNumber"
@@ -46,6 +50,7 @@
       <Input label="手機號碼"
         className="mt-30"
         ref="phoneNumber"
+        refName="phoneNumberInput"
         :required="true"
         errorMsg="請輸入正確的電話號碼"
         :onValidation="invalidPhoneNumber"
@@ -117,11 +122,26 @@ export default {
   },
   methods: {
     submit(e) {
-      if (this.$refs.cardName.validation() ||
-          this.$refs.creditCardNumber.validation() ||
-          this.$refs.creditCardDate.validation() ||
-          this.$refs.creditCardValidNumber.validation() ||
-          this.$refs.phoneNumber.validation()) return;
+      if (this.$refs.cardName.validation()) {
+        this.$refs.cardName.$refs.cardNameInput.focus();
+        return;
+      }
+      if (this.$refs.creditCardNumber.validation()) {
+        this.$refs.creditCardNumber.$refs.creditCardNumberInput.focus();
+        return;
+      }
+      if (this.$refs.creditCardDate.validation()) {
+        this.$refs.creditCardDate.$refs.creditCardDateInput.focus();
+        return;
+      }
+      if (this.$refs.creditCardValidNumber.validation()) {
+        this.$refs.creditCardValidNumber.$refs.creditCardValidNumberInput.focus();
+        return;
+      }
+      if (this.$refs.phoneNumber.validation()) {
+        this.$refs.phoneNumber.$refs.phoneNumberInput.focus();
+        return;
+      }
       this.$router.push({ path: 'end' });
     },
     invalidCardName() {

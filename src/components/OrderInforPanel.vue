@@ -33,7 +33,7 @@
         </li>
       </ul>
     </div>
-    <PayStylePanelOnPad />
+    <PayStylePanelOnPad v-if="innerWidth <= 768"/>
     <div class="store-logo">
       <img :src='`${publicPath}images/store.png`' alt="">
     </div>
@@ -49,12 +49,19 @@ export default {
       default: 'credit_card'
     }
   },
+  mounted() {
+    this.innerWidth = window.innerWidth;
+    window.addEventListener('resize', () => {
+      this.innerWidth = window.innerWidth;
+    });
+  },
   components: {
     PayStylePanelOnPad
   },
   data() {
     return {
-      publicPath: process.env.BASE_URL
+      publicPath: process.env.BASE_URL,
+      innerWidth: 0
     };
   }
 };

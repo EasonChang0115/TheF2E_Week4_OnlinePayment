@@ -2,7 +2,7 @@
   <div class="form-input width-init" :class="className">
     <label><span v-if="required">*</span>{{ label }}</label>
     <div class="input-box number" :style="{ borderBottomColor: invalid ? '#FF521A' : '' }">
-      <input class="number" type="text" :value="value" @change="changeNumber" @focus="onfocus">
+      <input class="number" :ref="refName" type="text" :value="value" @change="changeNumber">
     </div>
     <div class="error-msg"
       :style="{
@@ -18,6 +18,10 @@
 <script>
 export default {
   props: {
+    refName: {
+      type: String,
+      default: ''
+    },
     className: {
       type: String,
       default: ''
@@ -57,9 +61,6 @@ export default {
     };
   },
   methods: {
-    onfocus() {
-      this.invalid = false;
-    },
     validation() {
       if (this.required) {
         this.invalid = this.onValidation();
@@ -68,6 +69,7 @@ export default {
       return false;
     },
     changeNumber(e) {
+      this.invalid = false;
       this.$emit('input', e.target.value);
     }
   }

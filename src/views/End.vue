@@ -45,6 +45,9 @@ export default {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    @include pad-width {
+      padding: 50px 25px 105px;
+    }
   }
   .banner {
     width: 100%;
@@ -61,6 +64,9 @@ export default {
     img {
       width: 270px;
       height: 67px;
+    }
+    @include pad-width {
+      text-align: center;
     }
   }
   h2 {

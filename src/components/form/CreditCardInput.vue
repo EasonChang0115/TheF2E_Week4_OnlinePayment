@@ -3,33 +3,29 @@
     <label><span v-if="required">*</span>{{ label }}</label>
     <div class="input-boxes">
       <div class="input-box" :style="{ borderBottomColor: invalid ? '#FF521A' : '' }">
-        <input type="text" id="credit-card-input1" name="input1" maxlength="4" placeholder="* * * *"
+        <input type="text" :ref="refName" id="credit-card-input1" name="input1" maxlength="4" placeholder="* * * *"
         v-model.number="cardNumber.input1"
-        @keyup="e => { setBlur(e, 'credit-card-input2') }"
-        @focus="focus">
+        @keyup="e => { setBlur(e, 'credit-card-input2') }">
       </div>
       <div class="line">-</div>
       <div class="input-box" :style="{ borderBottomColor: invalid ? '#FF521A' : '' }">
         <input type="text" id="credit-card-input2"  name="input2" maxlength="4" placeholder="* * * *"
         v-model.number="cardNumber.input2"
         @keyup="e => { setBlur(e, 'credit-card-input3') }"
-        @keyup.delete="e => { setBlurUp(e, 'credit-card-input1') }"
-        @focus="focus">
+        @keyup.delete="e => { setBlurUp(e, 'credit-card-input1') }">
       </div>
       <div class="line">-</div>
       <div class="input-box" :style="{ borderBottomColor: invalid ? '#FF521A' : '' }">
         <input type="text" id="credit-card-input3" name="input3" maxlength="4" placeholder="* * * *"
         v-model.number="cardNumber.input3"
         @keyup="e => { setBlur(e, 'credit-card-input4') }"
-        @keyup.delete="e => { setBlurUp(e, 'credit-card-input2') }"
-        @focus="focus">
+        @keyup.delete="e => { setBlurUp(e, 'credit-card-input2') }">
       </div>
       <div class="line">-</div>
       <div class="input-box" :style="{ borderBottomColor: invalid ? '#FF521A' : '' }">
         <input type="text" id="credit-card-input4"  name="input4" maxlength="4" placeholder="* * * *"
         v-model.number="cardNumber.input4"
-        @keyup.delete="e => { setBlurUp(e, 'credit-card-input3') }"
-        @focus="focus">
+        @keyup.delete="e => { setBlurUp(e, 'credit-card-input3') }">
       </div>
     </div>
     <div class="error-msg"
@@ -46,6 +42,10 @@
 <script>
 export default {
   props: {
+    refName: {
+      type: String,
+      default: ''
+    },
     className: {
       type: String,
       default: ''
@@ -86,6 +86,7 @@ export default {
                          this.cardNumber.input2 + '' +
                          this.cardNumber.input3 + '' +
                          this.cardNumber.input4;
+        this.invalid = false;
         this.$emit('onCardNumberChange', cardNumber);
       }
     }
@@ -97,9 +98,6 @@ export default {
         return this.invalid;
       }
       return false;
-    },
-    focus() {
-      this.invalid = false;
     },
     setBlur(e, nextEle) {
       let target = document.getElementById(nextEle);

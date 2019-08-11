@@ -3,15 +3,13 @@
     <label><span v-if="required">*</span>{{ label }}</label>
     <div class="input-boxes">
       <div class="input-box date" :style="{ borderBottomColor: invalid ? '#FF521A' : '' }">
-        <input type="text" id="credit-card-month" placeholder="MM" v-model="dateInput.month" maxlength="2"
-        @keyup="e => { setBlur(e, 'credit-card-year') }"
-        @focus="onfocus">
+        <input type="text" :ref="refName" id="credit-card-month" placeholder="MM" v-model="dateInput.month" maxlength="2"
+        @keyup="e => { setBlur(e, 'credit-card-year') }">
       </div>
       <div class="line latic">/</div>
       <div class="input-box date" :style="{ borderBottomColor: invalid ? '#FF521A' : '' }">
         <input type="text" id="credit-card-year" placeholder="YY" v-model="dateInput.year" maxlength="2"
-        @keyup.delete="e => { setBlurUp(e, 'credit-card-month') }"
-        @focus="onfocus">
+        @keyup.delete="e => { setBlurUp(e, 'credit-card-month') }">
       </div>
     </div>
     <div class="error-msg"
@@ -28,6 +26,10 @@
 <script>
 export default {
   props: {
+    refName: {
+      type: String,
+      default: ''
+    },
     className: {
       type: String,
       default: ''
@@ -61,6 +63,7 @@ export default {
     dateInput: {
       deep: true,
       handler() {
+        this.invalid = false;
         this.$emit('onCardDateChange', this.dateInput);
       }
     }
@@ -81,9 +84,6 @@ export default {
         return this.invalid;
       }
       return false;
-    },
-    onfocus() {
-      this.invalid = false;
     },
     setBlur(e, nextEle) {
       let target = document.getElementById(nextEle);
